@@ -1,0 +1,5 @@
+127.0.0.1 localhost
+192.168.56.111 jenkins.vagrant.com
+192.168.56.112 db.vagrant.com
+192.168.56.113 web.vagrant.com
+192.168.56.114 puppetmaster.vagrant.com
