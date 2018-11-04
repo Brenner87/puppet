@@ -8,8 +8,8 @@ hierarchy:
     paths:
       - 'secrets.yaml'
     options: 
-      pkcs7_private_key: /vagrant/keys/private_key.pkcs7.pem
-      pkcs7_public_key:  /vagrant/keys/public_key.pkcs7.pem
+      pkcs7_private_key: /etc/puppetlabs/puppet/keys/private_key.pkcs7.pem
+      pkcs7_public_key:  /etc/puppetlabs/puppet/vagrant/keys/public_key.pkcs7.pem
 
 defaults:
   data_hash: 'yaml_data'
