@@ -13,3 +13,4 @@ class jenkins::install ($base_version,
     package {'jenkins':
         ensure => $base_version,
     }
+}
