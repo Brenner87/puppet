@@ -1,7 +1,7 @@
 ---
   base::base_version:    'latest'
-  jenkins::base_version: 'latest'
-  jenkins::jdk_version:  '1.8.0.181-3.b13.el7_5'
+  jenkins::install::base_version: 'latest'
+  jenkins::install::jdk_version:  '1.8.0.181-3.b13.el7_5'
   
 
   base::handle_users::users:
