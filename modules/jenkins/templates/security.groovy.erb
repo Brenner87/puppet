@@ -13,7 +13,6 @@ instance.setSecurityRealm(hudsonRealm)
 def strategy = new FullControlOnceLoggedInAuthorizationStrategy()
 strategy.setAllowAnonymousRead(false)
 instance.setAuthorizationStrategy(strategy)
-instance.setInstallState(InstallState.INITIAL_SETUP_COMPLETED)
 instance.save()
 
 Jenkins.instance.getInjector().getInstance(AdminWhitelistRule.class)

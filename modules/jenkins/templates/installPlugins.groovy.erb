@@ -4,27 +4,39 @@ import java.util.logging.Logger
 def logger = Logger.getLogger("")
 def isInstalled = false
 def isInitialized = false
-def instance = Jenkins.getInstance()
 
 def pluginList = "ws-cleanup timestamper credentials-binding build-timeout antisamy-markup-formatter cloudbees-folder pipeline-stage-view pipeline-github-lib github-branch-source workflow-aggregator gradle ant mailer email-ext ldap pam-auth matrix-auth ssh-slaves hithub git"
 
 def plugins=pluginList.split()
 
+def instance = Jenkins.getInstance()
+
 def masterJenkinsInstance = Jenkins.getInstance()
-def pluginManager = instance.getPluginManager()
-def updateCenter = instance.getUpdateCenter()
+def pm = instance.getPluginManager()
+def uc = instance.getUpdateCenter()
 
 plugins.each {
     logger.info("Checking " + it)
-    if (!pluginManager.getPlugin(it)) {
+    if (!pm.getPlugin(it)) {
         logger.info("Looking UpdateCenter for " + it)
-        if (!isInitialized) {
-            updateCenter.updateAllSites()
-            isInitialized = true
+        if (!initialized) {
+            uc.updateAllSites()
+            initialized = true
         }
-        def plugin = updateCenter.getPlugin(it)
+        def plugin = uc.getPlugin(it)
         if (plugin) {
             logger.info("Installing " + it)
+            def installFuture = plugin.deploy()
+            while(!installFuture.isDone()) {
+                logger.info("Waiting for plugin install: " + it)
+                sleep(3000)
+            }
+            installed=true
         }
     }
 }
+
+if (installed) {
+    logger.info("Plugins installed, initializing a restart!"
+    instance.save()
+    instance.restart()
