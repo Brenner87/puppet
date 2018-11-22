@@ -30,7 +30,7 @@ class jenkins::maven {
         owner  => 'root',
         group  => 'root',
         mode   => '644',
-        content => temlate('jenkins/maven.sh.erb'),
+        content => template('jenkins/maven.sh.erb'),
     }
 
     file {"${destination}/conf/settings.xml":
@@ -38,7 +38,7 @@ class jenkins::maven {
         owner  => 'root',
         group  => 'root',
         mode   => '644',
-        content => temlate('jenkins/settings.xml.erb'),
+        content => template('jenkins/settings.xml.erb'),
     }
     
     File[$archive] -> File[$destination] -> Exec['unpack_maven'] ~> File['/etc/profile.d/maven.sh'] ~> File["${destination}/conf/settings.xml"]
