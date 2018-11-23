@@ -1,7 +1,7 @@
 class jenkins::maven {
 
-    package {'java-1.8.0-openjdk-devel':
-        ensure => 'latest',
+#    package {'java-1.8.0-openjdk-devel':
+#        ensure => 'latest',
 
     $source = 'http://www-eu.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz'
     $destination = '/opt/maven'
