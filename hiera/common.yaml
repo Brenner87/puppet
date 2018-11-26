@@ -1,17 +1,40 @@
 ---
-  base::base_version:    'latest'
-  jenkins::install::base_version: 'latest'
+  base::base_version:             'latest'
+  jenkins::install::base_version: '2.145-1.1'
   jenkins::install::jdk_version:  '1.8.0.191.b12-0.el7_5'
+  puppetmaster::puppet_version:   '5.3.5-1.el7'
+  docker::install::version:       '18.06.1.ce-3.el7'
   
+
+
+  base::handle_users::groups:
+    'vagrant':
+      ensure: 'presnet'
+      gid:    '1000'
+    'jenkins':
+      ensure: 'present'
+      gid:    '993'
+    'docker':
+      ensure: 'present'
+      gid:    '992'
 
   base::handle_users::users:
     'vagrant':
-      ensure: present
+      ensure: 'present'
       uid:    1000
       shell:  '/bin/bash'
       home:   '/home/vagrant'
       groups:   'vagrant'
       gid:    1000
+    'jenkins':
+      ensure: 'present'
+      uid:    996
+      shell:  '/bin/false'
+      home:   '/val/lib/jenkins'
+      groups:   
+        - 'jenkins'
+        - 'docker'
+      gid:    '993'
   
   base::handle_hosts::hosts:
     'jenkins.vagrant.com':
@@ -33,4 +56,3 @@
   base::handle_users::auth_keys:
     'vagrant': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7M2Yz3BH3YTll65eaTQ7wa9upYp+HpcMdmFg+NXvvHt3uj5L5W7xdbDNGT176tXFZ+/AzTfNPXaiMslG8R3sKPxG+p0jYvJaAybduHfh8F900bvaZm9C7MeGwHDxNER8Q1wh7Ahdvm8xr0woOE2WWEmFUbv60xHVwpiTsl8XzHvHU4zmV1II+cokjbGwLtHKnCoV+YIYtOkOcTENVVReh+cO1Xw9RKV602+lTWTjvTlf+vRVCVOt4BhKFuyx8vJQCD5aIhXoTL2UIioe9yNFqZRmVxLgyays2fDhxKimdrDpS2ccDuqm4jPEl8/BNrBV68PA8O5n3MsRmUBDv7MYd vagrant@jenkins.vagrant.com'
 
-  puppetmaster::puppet_version: '5.3.5-1.el7'
