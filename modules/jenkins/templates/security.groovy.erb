@@ -36,6 +36,6 @@ else {
 
 a=Jenkins.instance.getExtensionList(hudson.tasks.Maven.DescriptorImpl.class)[0];
 b=(a.installations as List);
-b.add(new hudson.tasks.Maven.MavenInstallation("mvn", "/home/maven", []));
+b.add(new hudson.tasks.Maven.MavenInstallation("mvn", "/opt/maven", []));
 a.installations=b
 a.save()
