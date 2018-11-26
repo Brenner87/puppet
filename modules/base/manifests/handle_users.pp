@@ -1,4 +1,10 @@
-class base::handle_users ($auth_keys, $users){
+class base::handle_users ($auth_keys, $users, $groups){
+
+  $groups.each |$groupname, $attr|{
+    group {$groupname:
+      * => $attr,
+      }
+  }
 
   $users.each |$username, $attrs| {
     user {$username:
