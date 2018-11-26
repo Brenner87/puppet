@@ -9,7 +9,7 @@
 
   base::handle_users::groups:
     'vagrant':
-      ensure: 'presnet'
+      ensure: 'present'
       gid:    '1000'
     'jenkins':
       ensure: 'present'
