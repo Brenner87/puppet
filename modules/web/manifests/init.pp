@@ -1,4 +1,4 @@
 class web {
-    pacakge {'nginx':
+    package {'nginx':
         ensure => 'latest',
 }
