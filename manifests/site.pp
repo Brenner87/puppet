@@ -12,3 +12,9 @@ node /^puppetmaster.*vagrant\.com/ {
     notify {'This is production environment':}
     include 'role::puppetmaster'
 }
+
+node /^web.*vagrant\.com/ {
+    notify {'This is production environment':}
+    include 'role::web'
+    include 'role::django'
+}

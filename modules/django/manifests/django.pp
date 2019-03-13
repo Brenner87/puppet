@@ -1,4 +1,4 @@
-class django (
+class django::django_app (
     $proj_allowed_hosts,
     $proj_url,
     $proj_name,
