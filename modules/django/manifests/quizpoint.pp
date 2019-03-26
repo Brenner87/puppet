@@ -1,6 +1,6 @@
 class django::quizpoint (
-    quizpoint_params,
-    quizpoint_secret
+    $quizpoint_params,
+    $quizpoint_secret
 )
 {
     $linux_packages = [
