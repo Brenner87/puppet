@@ -34,7 +34,8 @@ class django::quizpoint (
     pip::install { $pip_packages:
         python_version => '3.6',
         ensure         => present,
-}
+        require        => Package['python36-pip'],
+    }
 
        
 }
