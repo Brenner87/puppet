@@ -24,11 +24,18 @@ class django::quizpoint (
         ensure => latest
     }
 
-    package { $pip_packages:
-        ensure   => latest,
-        provider => pip,
-        require  => Package['python36-pip']
-    }
+#    package { $pip_packages:
+#        ensure   => latest,
+#        provider => pip,
+#        require  => Package['python36-pip']
+#    }
+
+    include pip
+
+    pip::install { $pip_packages:
+        python_version => '3.6',
+        ensure         => present,
+}
 
        
 }
