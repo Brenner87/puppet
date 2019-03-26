@@ -11,7 +11,6 @@ class django::quizpoint (
     ]
 
     $pip_packages = [
-        'pip',
         'virtualenv',
     ]
 
