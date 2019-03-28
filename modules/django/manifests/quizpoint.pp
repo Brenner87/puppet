@@ -9,7 +9,7 @@ class django::quizpoint (
 
     python::update_pip { 'update-pip':
         python => $quizpoint_params['python'],
-        require => Python::Install_python['proj_python']
+        require => Python::Install_python[$quizpoint_params['python']]
     }
 
     python::install_pip_module {'virtualenv':
