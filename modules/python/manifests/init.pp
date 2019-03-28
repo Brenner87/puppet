@@ -1,6 +1,6 @@
 class python {
 
-    define django::python::install_python (
+    define python::install_python (
         $python
     ){
         $packages=["ius-release", $python, "${python}-pip", "${python}-devel"]
@@ -18,7 +18,7 @@ class python {
         Package['ius-release'] -> Package[$python] -> Package["${python}-devel"] -> Package["${python}-pip"]    
     }
 
-    define django::python::update_pip (
+    define python::update_pip (
         $python
     ){
         exec {'update-pip':
@@ -26,7 +26,7 @@ class python {
         }
     }
 
-    define django::python::install_pip_module (
+    define python::install_pip_module (
         $python='python2',
         $module
     ){
