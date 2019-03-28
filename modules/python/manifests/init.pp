@@ -1,7 +1,7 @@
 class python {
 
     define install_python (
-        $python
+        $python=$title
     ){
         $packages=["ius-release", $python, "${python}-pip", "${python}-devel"]
     
@@ -19,20 +19,31 @@ class python {
     }
 
     define update_pip (
-        $python
+        $python='python2'
     ){
         exec {'update-pip':
-            command => "/bin/${python} -m pip install -U pip"
+            command => "/bin/${python} -m pip install -U pip",
+            refreshonly => true,
         }
     }
 
     define install_pip_module (
         $python='python2',
-        $module
+        $module=$title,
+        $version='',
     ){
-        Exec {"install-module":
-            command => "/bin/${python} -m pip install ${module}",
-            unless  => "/bin/${python} -m pip list installed | grep ${module}",
+
+        if $version {
+            $command="/bin/${python} -m pip install ${module}==${$version}"
+            $unless_command="/bin/${python} -m pip list installed | grep ${modulea} | grep ${version}"
+        }
+        else { 
+            $command="/bin/${python} -m pip install ${module}"
+            $unless_command="/bin/${python} -m pip list installed | grep ${module}"
+        }
+
+        Exec {$command:
+            unless  => $unless_command,
         }
     }
 
