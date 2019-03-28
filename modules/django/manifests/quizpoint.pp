@@ -16,6 +16,7 @@ class django::quizpoint (
 
     python::install_pip_module {'module':
         python => $quizpoint_params['python'],
+        module => 'virtualenv',
         require =>Python::Update_pip['update-pip']
     }   
 }
