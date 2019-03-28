@@ -1,4 +1,4 @@
-define install_python (
+define django::install_python (
     $python
 ){
     $packages=[$python, "${python}-pip", "${python}-devel"]
