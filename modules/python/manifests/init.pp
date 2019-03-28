@@ -30,8 +30,8 @@ class python {
         $module
     ){
         Exec {"install-module":
-            command => "/bin/${python} -m pip install ${module}"
-            unless  => "/bin/${python} -m pip list installed | grep ${module}"
+            command => "/bin/${python} -m pip install ${module}",
+            unless  => "/bin/${python} -m pip list installed | grep ${module}",
     }
 
 }
