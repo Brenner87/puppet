@@ -6,13 +6,13 @@ define django::install_python (
     yumrepo {'ius':
         baseurl  => 'https://dl.iuscommunity.org/pub/ius/stable/CentOS/7',
         gpgcheck => 0,
+        enabled => true,
         descr    => 'Python repo'
     }
 
     yum::group { 'development':
         ensure  => 'present',
         timeout => 600,
-        enabled => true,
         require => Yumrepo['ius'],
     }
 
