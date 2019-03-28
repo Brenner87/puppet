@@ -13,6 +13,6 @@ define django::install_python (
         ensure => present,
     }
 
-    Package['ius-release'] -> Package[$python] -> Package["${python}-devel"] -> Pakcage["${python}-pip"]
+    Package['ius-release'] -> Package[$python] -> Package["${python}-devel"] -> Package["${python}-pip"]
    
 }
