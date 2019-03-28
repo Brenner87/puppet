@@ -30,7 +30,7 @@ class python {
     define install_pip_module (
         $python='python2',
         $module=$title,
-        $version='',
+        $version=undef,
     ){
 
         if $version {
