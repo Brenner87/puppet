@@ -3,9 +3,9 @@ class django::quizpoint (
     $quizpoint_secret
 )
 {
-    include django::python
+    #include python
 
-    django::python::install_python { "proj_python":
+    python::install_python { "proj_python":
         python => $quizpoint_params['python']
         }
        
