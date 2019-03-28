@@ -4,9 +4,9 @@ define django::install_python (
     $packages=[$python, "${python}-pip", "${python}-devel"]
 
     yumrepo {'ius':
-        baseurl     => 'https://dl.iuscommunity.org/pub/ius/stable/CentOS/7',
-        gpgcheck    => 0,
-        description => 'Python repo'
+        baseurl  => 'https://dl.iuscommunity.org/pub/ius/stable/CentOS/7',
+        gpgcheck => 0,
+        descr    => 'Python repo'
     }
 
     yum::group { 'development':
