@@ -5,7 +5,7 @@ class django::quizpoint (
 {
     #include python
 
-    python::install_python { $quizpoint_params['python'] }
+    python::install_python { $quizpoint_params['python']: }
 
     python::update_pip { 'update-pip':
         python => $quizpoint_params['python'],
