@@ -11,7 +11,6 @@ define django::install_python (
 
     package { $packages:
         ensure => present,
-        require => Yumrepo['ius'],
     }
 
     Package['ius-release'] -> Package[$python] -> Package["${python}-devel" -> Pakcage["${python}-pip"]
