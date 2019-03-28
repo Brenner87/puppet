@@ -12,6 +12,7 @@ define django::install_python (
     yum::group { 'development':
         ensure  => 'present',
         timeout => 600,
+        enabled => true,
         require => Yumrepo['ius'],
     }
 
