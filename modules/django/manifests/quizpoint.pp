@@ -63,4 +63,12 @@ class django::quizpoint (
         owner   => $quizpoint_params['user'],
         require => Python::Create_venv["${quizpoint_params['proj_path']}/env"]
     }
+
+    vcsrepo {"${quizpoint_params['proj_path']}/www":
+        ensure   => latest,
+        provider => 'git',
+        source   => $quizpoint_params['proj_src'],
+        user     => $quizpoint_params['user'],
+        group    => 'nginx',
+    }
 }
