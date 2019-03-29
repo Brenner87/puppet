@@ -21,7 +21,6 @@ class django::quizpoint (
     user {$quizpoint_params['user']:
         ensure     => present,
         uid        => 1200,
-        gid        => 1200,
         managehome => false,
     }
 
