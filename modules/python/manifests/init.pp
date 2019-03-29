@@ -54,7 +54,7 @@ class python {
     ){
         Exec {$path:
             command => "/usr/local/bin/virtualenv -p ${python} ${path}",
-            unless => "ls ${path}",
+            unless => "/bin/ls ${path}",
         }
     }
 
