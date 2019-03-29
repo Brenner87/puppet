@@ -80,7 +80,7 @@ class django::quizpoint (
         python   => $quizpoint_params['python'],
         venv     => "${quizpoint_params['proj_path']}/env",
         owner    => $quizpoint_params['user'],
-        req_file => "$quizpoint_params['proj_path']/www/requirements.txt",
+        req_file => "${quizpoint_params['proj_path']}/www/requirements.txt",
         require  => [
                 Python::Create_venv["${quizpoint_params['proj_path']}/env"], 
                 Vcsrepo["${quizpoint_params['proj_path']}/www"]                     ]
