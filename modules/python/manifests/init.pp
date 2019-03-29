@@ -51,9 +51,10 @@ class python {
     define create_venv(
         $path=$title,
         $python='python2',
+        $owner='root',
     ){
         Exec {$path:
-            command => "/usr/local/bin/virtualenv -p ${python} ${path}",
+            command => "sudo -u ${owner} /usr/local/bin/virtualenv -p ${python} ${path}",
             unless => "/bin/ls ${path}",
         }
     }
