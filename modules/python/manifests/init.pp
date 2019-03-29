@@ -28,22 +28,33 @@ class python {
     }
 
     define install_pip_module (
-        $python='python2',
-        $module=$title,
-        $version=undef,
+        $python  = 'python2',
+        $module  = $title,
+        $version = undef,
+        $venv    = '',
     ){
 
         if $version {
-            $command="/bin/${python} -m pip install ${module}==${$version}"
-            $unless_command="/bin/${python} -m pip list installed | grep ${modulea} | grep ${version}"
+            $command="${venv}/bin/${python} -m pip install ${module}==${$version}"
+            $unless_command="${venv}/bin/${python} -m pip list installed | grep ${modulea} | grep ${version}"
         }
         else { 
-            $command="/bin/${python} -m pip install ${module}"
-            $unless_command="/bin/${python} -m pip list installed | grep ${module}"
+            $command="${venv}/bin/${python} -m pip install ${module}"
+            $unless_command="${venv}/bin/${python} -m pip list installed | grep ${module}"
         }
 
         Exec {$command:
             unless  => $unless_command,
+        }
+    }
+
+    define create_venv(
+        $path=$title,
+        $python='python2',
+    ){
+        Exec {$path:
+            command => "/usr/local/bin/virtualenv -p ${python} ${path}",
+            unless => "ls ${path}",
         }
     }
 
