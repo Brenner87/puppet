@@ -70,5 +70,9 @@ class django::quizpoint (
         source   => $quizpoint_params['proj_src'],
         user     => $quizpoint_params['user'],
         group    => 'nginx',
+        require  => [User[$quizpoint_params['user']], 
+                     File[$quizpoint_params['proj_path']],
+                     Package['git']
+                    ],
     }
 }
