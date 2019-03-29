@@ -5,18 +5,6 @@ class django::quizpoint (
 {
     #include python
 
-    python::install_python { $quizpoint_params['python']: }
-
-    python::update_pip { 'update-pip':
-        python    => $quizpoint_params['python'],
-        subscribe => Python::Install_python[$quizpoint_params['python']]
-    }
-
-    python::install_pip_module {'virtualenv':
-        python  => $quizpoint_params['python'],
-        module  => 'virtualenv',
-        require =>Python::Update_pip['update-pip']
-    }  
 
     user {$quizpoint_params['user']:
         ensure     => present,
@@ -50,4 +38,25 @@ class django::quizpoint (
         group   => 'nginx',
         require => File["${quizpoint_params['proj_path']}/logs"],
     }
+
+    python::install_python { $quizpoint_params['python']: }
+
+    python::update_pip { 'update-pip':
+        python    => $quizpoint_params['python'],
+        subscribe => Python::Install_python[$quizpoint_params['python']]
+    }
+
+    python::install_pip_module {'virtualenv':
+        python  => $quizpoint_params['python'],
+        require =>Python::Update_pip['update-pip']
+    }  
+
+    python::create_venv {"${quizpoint_params['proj_path']}/env":
+        python  => $quizpoint_params['python'],
+        require => Python::Install_pip_module ['virtualenv']
+    }
+
+    python::install_pip_module {'uwsgi':
+        python => $quizpoint_params['python'],
+        venv   => "${quizpoint_params['proj_path']}/env",
 }
