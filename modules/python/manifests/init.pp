@@ -28,19 +28,27 @@ class python {
     }
 
     define install_pip_module (
-        $python  = 'python2',
-        $module  = $title,
-        $version = undef,
-        $venv    = '',
-        $owner   = 'root',
+        $python   = 'python2',
+        $module   = $title,
+        $version  = undef,
+        $venv     = '',
+        $owner    = 'root',
+        $req_file = undef
     ){
 
-        if $version {
+        if $req_file {
+            $command="/bin/sudo -u ${owner} ${venv}/bin/${python} -m pip install -r ${req_file} && 
+            /bin/sudo -u ${owner} sh -c 'echo DONE > ${venv}/bin/${python}_${owner}_modules_deployment_done'"
+            $unless_command="bin/ls ${venv}/bin/${python}_${owner}_modules_deployment_done"
+        }
+
+        elsif $version {
             $command="/bin/sudo -u ${owner} ${venv}/bin/${python} -m pip install ${module}==${$version}"
             $unless_command="${venv}/bin/${python} -m pip list installed | grep ${modulea} | grep ${version}"
         }
+
         else { 
-            $command="${venv}/bin/${python} -m pip install ${module}"
+            $command="/bin/sudo -u ${owner} ${venv}/bin/${python} -m pip install ${module}"
             $unless_command="${venv}/bin/${python} -m pip list installed | grep ${module}"
         }
 
