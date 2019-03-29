@@ -32,10 +32,11 @@ class python {
         $module  = $title,
         $version = undef,
         $venv    = '',
+        $owner   = 'root',
     ){
 
         if $version {
-            $command="${venv}/bin/${python} -m pip install ${module}==${$version}"
+            $command="/bin/sudo -u ${owner} ${venv}/bin/${python} -m pip install ${module}==${$version}"
             $unless_command="${venv}/bin/${python} -m pip list installed | grep ${modulea} | grep ${version}"
         }
         else { 
@@ -54,7 +55,7 @@ class python {
         $owner='root',
     ){
         Exec {$path:
-            command => "sudo -u ${owner} /usr/local/bin/virtualenv -p ${python} ${path}",
+            command => "/bin/sudo -u ${owner} /usr/local/bin/virtualenv -p ${python} ${path}",
             unless => "/bin/ls ${path}",
         }
     }

@@ -53,12 +53,14 @@ class django::quizpoint (
 
     python::create_venv {"${quizpoint_params['proj_path']}/env":
         python  => $quizpoint_params['python'],
+        owner   => $quizpoint_params['user'],
         require => Python::Install_pip_module['virtualenv']
     }
 
     python::install_pip_module {'uwsgi':
         python  => $quizpoint_params['python'],
         venv    => "${quizpoint_params['proj_path']}/env",
+        owner   => $quizpoint_params['user'],
         require => Python::Create_venv["${quizpoint_params['proj_path']}/env"]
     }
 }
