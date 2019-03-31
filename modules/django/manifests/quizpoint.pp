@@ -85,5 +85,11 @@ class django::quizpoint (
                 Python::Create_venv["${quizpoint_params['proj_path']}/env"], 
                 Vcsrepo["${quizpoint_params['proj_path']}/www"]                     ]
    }
+
+   django::tools::collectstatic {$quizpoint_params['proj_path']:
+       user    => $quizpoint_params['user'],
+       group   => 'nginx',
+       require => Vcsrepo["${quizpoint_params['proj_path']}/www"]
+   }
         
 }
