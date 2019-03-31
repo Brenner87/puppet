@@ -6,8 +6,9 @@ class django::tools {
     ){
         $command="/bin/echo yes | ${proj_path}/env/bin/python ${proj_path}/www/manage.py collectstatic"
         Exec {$command:
-            user  => $user,
-            group => $group,
+            user        => $user,
+            group       => $group,
+            environment => ['IS_PROD=true']
         }     
     }
 }
