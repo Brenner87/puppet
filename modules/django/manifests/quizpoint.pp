@@ -16,7 +16,6 @@ class django::quizpoint (
     $db_port       = $quizpoint_params['db_port']
     $db_user       = $quizpoint_params['db_user']
     $db_name       = $quizpoint_params['db_name']
-    $db_port       = $quizpoint_params['db_port']
     $user          = $quizpoint_params['user']
     $group         = $quizpoint_params['group']
     $python        = $quizpoint_params['python'] 
