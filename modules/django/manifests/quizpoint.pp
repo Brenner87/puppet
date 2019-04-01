@@ -7,10 +7,10 @@ class django::quizpoint (
 
 
     $allowed_hosts = $quizpoint_params['proj_allowed_hosts']
-    $name          = $quizpoint_params['proj_name']
+    $proj_name     = $quizpoint_params['proj_name']
     $db_addr       = $quizpoint_params['proj_db_addr']
     $path          = $quizpoint_params['proj_path']
-    $log           = "${path}/logs/${name}.log"
+    $log           = "${path}/logs/${proj_name}.log"
     $src           = $quizpoint_params['proj_src']
     $is_prod       = $quizpoint_params['is_prod']
     $db_port       = $quizpoint_params['db_port']
@@ -123,7 +123,7 @@ class django::quizpoint (
         require => File["${path}/config"],
     }
 
-    file {"/etc/systemd/system/${name}.service":
+    file {"/etc/systemd/system/${proj_name}.service":
         ensure  => present,
         content => epp('uwsgi.service.epp'),
         owner   => 'root',
