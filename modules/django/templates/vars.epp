@@ -1,7 +1,7 @@
 <%- |
 String $allowed_hosts,
 String $proj_name,
-String $db_addr,
+Integer $db_addr,
 String $path,
 String $log,
 String $src,
