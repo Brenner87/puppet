@@ -18,8 +18,8 @@ String $db_key
 | -%>
 
 PROJ_ALLOWED_HOSTS='<%= $allowed_hosts %>'
-PROJ_NAME=<%= $django::quizpoint::name %>
-PROJ_DB_ADDR=<%= $::db_addr %>
+PROJ_NAME=<%= $proj_name %>
+PROJ_DB_ADDR=<%= $db_addr %>
 PROJ_PATH=<%= $path %>
 UWSGI_LOG=<%= $log %>
 IS_PROD=<%= $is_prod %>
