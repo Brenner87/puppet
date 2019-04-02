@@ -101,11 +101,6 @@ class django::quizpoint (
                     ]
    }
 
-   #   django::tools::collectstatic {$quizpoint_params['proj_path']:
-   #       user    => $quizpoint_params['user'],
-   #       group   => 'nginx',
-   #       require => Vcsrepo["${quizpoint_params['proj_path']}/www"]
-   #   }
 
     file {"${path}/config/vars":
         ensure  => present,
@@ -155,4 +150,18 @@ class django::quizpoint (
         group   => 'root',
         require => File["${path}/config"],
     }
+
+   django::tools::collectstatic {$path:
+        user          => $quizpoint_params['user'],
+        group         => 'nginx',
+        is_prod       => $is_prod,
+        db_pass       => $db_pass,
+        db_key        => $db_key,
+        allowed_hosts => $allowd_hosts,
+        db_addr       => $db_addr,
+        db_port       => $db_port,
+        db_user       => $db_user,
+        db_name       => $db_name,
+        require       => Vcsrepo["${src}/www"]
+   }
 }
