@@ -108,7 +108,25 @@ class django::quizpoint (
 
     file {"${path}/config/vars":
         ensure  => present,
-        content => epp('django/vars.epp',),
+        content => epp('django/vars.epp',
+        {
+            allowed_hosts =>  $allowed_hosts,
+            proj_name     =>  $proj_name,
+            db_addr       =>  $db_addr,
+            path          =>  $path,
+            log           =>  $log,
+            src           =>  $src,
+            is_prod       =>  $is_prod,
+            db_port       =>  $db_port,
+            db_user       =>  $db_user,
+            db_name       =>  $db_name,
+            user          =>  $user,
+            group         =>  $group,
+            python        =>  $python,
+            uwsgi_port    =>  $uwsgi_port,
+            db_pass       =>  $db_pass,
+            db_key        =>  $db_key,
+        }),
         owner   => $quizpoint_params['user'],
         group   => $quizpoint_params['group'],
         require => File["${path}/config"]
