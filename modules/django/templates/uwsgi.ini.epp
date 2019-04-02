@@ -18,7 +18,7 @@ master         = true
 # maximum number of worker processes
 processes      = 1
 # the socket (use the full path to be safe
-socket         = <%= $uwsgi_addr -%>:<%= $uwsgi_port -%>
+socket         = <%= $uwsgi_addr -%>:<%= $uwsgi_port %>
 # pid file
 pidfile=$(PROJ_PATH)/run_data/$(PROJ_NAME).pid
 #socket          = '/tmp/uwsgi_socket'

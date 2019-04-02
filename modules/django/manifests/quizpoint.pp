@@ -145,8 +145,12 @@ class django::quizpoint (
     }
 
     file {"/etc/systemd/system/${proj_name}.service":
-        ensure  => present,
-        content => epp('django/uwsgi.service.epp'),
+        ensure        => present,
+        content       => epp('django/uwsgi.service.epp', {
+            proj_name => $proj_name,
+            path      => $path,
+            user      => $user
+        }),
         owner   => 'root',
         group   => 'root',
         require => File["${path}/config"],

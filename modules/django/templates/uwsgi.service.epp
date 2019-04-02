@@ -1,5 +1,10 @@
+<%- |
+    String $proj_name,
+    String $path,
+    String $user
+| -%>
 [Unit]
-Description=uwsgi for <%= $name %> app
+Description=uwsgi for <%= $proj_name %> app
 
 # Requirements
 Requires=network.target
