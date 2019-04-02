@@ -23,7 +23,7 @@ class django::tools {
                     "DB_NAME=${db_name}",
                     "DB_USER=${db_user}",
                     "DB_PORT=${db_port}",
-                    "PROJ_ALLOWED_HOSTS=${allowed_hosts}",
+                    "PROJ_ALLOWED_HOSTS='${allowed_hosts}'",
                     "PROJ_DB_ADDR=${db_addr}"
             ]
         }     
