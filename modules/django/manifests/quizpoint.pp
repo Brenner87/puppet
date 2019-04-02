@@ -162,6 +162,6 @@ class django::quizpoint (
         db_port       => $db_port,
         db_user       => $db_user,
         db_name       => $db_name,
-        require       => Vcsrepo["${src}/www"]
+        require       => Vcsrepo["${path}/www"]
    }
 }
