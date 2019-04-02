@@ -50,7 +50,7 @@ class django::quizpoint (
 
 
     file {$log:
-        ensure  => directory,
+        ensure  => present,
         owner   => $user,
         group   => 'nginx',
         require => File["${path}/logs"],
