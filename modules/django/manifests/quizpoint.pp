@@ -20,6 +20,7 @@ class django::quizpoint (
     $group         = $quizpoint_params['group']
     $python        = $quizpoint_params['python'] 
     $uwsgi_port    = $quizpoint_params['uwsgi_port']
+    $uwsgi_addr    = $quizpoint_params['uwsgi_addr']
     $db_pass       = $quizpoint_secret['db_pass']
     $db_key        = $quizpoint_secret['db_key']
 
@@ -133,8 +134,11 @@ class django::quizpoint (
     }
 
     file {"${path}/config/uwsgi.ini":
-        ensure  => present,
-        content => epp('django/uwsgi.ini.epp'),
+        ensure         => present,
+        content        => epp('django/uwsgi.ini.epp', {
+            uwsgi_port => $uwsgi_port,
+            uwsgi_addr => $uwsgi_addr
+        }),
         owner   => $user,
         group   => $group,
         require => File["${path}/config"],
