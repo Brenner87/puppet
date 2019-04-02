@@ -18,8 +18,8 @@ class django::tools {
             group       => $group,
             environment => [
                     "IS_PROD=${is_prod}",
-                    "DB_QUIZPOINT_PASS=${db_pass}", 
-                    "DB_QUIZPOINT_KEY=${db_key}",
+                    "DB_PASS=${db_pass}", 
+                    "DB_KEY=${db_key}",
                     "DB_NAME=${db_name}",
                     "DB_USER=${db_user}",
                     "DB_PORT=${db_port}",
