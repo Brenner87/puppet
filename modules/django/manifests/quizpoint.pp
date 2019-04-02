@@ -162,7 +162,10 @@ class django::quizpoint (
         db_port       => $db_port,
         db_user       => $db_user,
         db_name       => $db_name,
-        subscribe     => Vcsrepo["${path}/www"]
+        subscribe     => [
+                            Vcsrepo["${path}/www"],
+                            Python::Create_venv["${path}/env"]
+                         ]
    }
    exec { 'daemon-reload':
         command     => '/usr/bin/systemctl daemon-reload',
