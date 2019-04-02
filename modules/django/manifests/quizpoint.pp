@@ -177,7 +177,7 @@ class django::quizpoint (
                         Exec['daemon-reload'],
                         File["${path}/config/uwsgi.ini"],
                         File["${path}/config/vars"],
-                        Django::Tools::Ccollectstatic[$path]
+                        Django::Tools::Collectstatic[$path]
                      ],
     }
 
