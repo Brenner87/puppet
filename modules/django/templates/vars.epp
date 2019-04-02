@@ -1,5 +1,5 @@
 PROJ_ALLOWED_HOSTS='<%= $allowed_hosts %>'
-PROJ_NAME=<%= $::name %>
+PROJ_NAME=<%= $::django::quizpoint::name %>
 PROJ_DB_ADDR=<%= $::db_addr %>
 PROJ_PATH=<%= $path %>
 UWSGI_LOG=<%= $log %>
