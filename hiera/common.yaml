@@ -71,4 +71,4 @@
     'user': 'quizpoint'
     'group': 'quizpoint'
     'python': 'python36'
-    'uwsgi_port': '3031'
+    'uwsgi_port': 3031
