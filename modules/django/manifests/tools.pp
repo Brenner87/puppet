@@ -16,6 +16,7 @@ class django::tools {
         Exec {$command:
             user        => $user,
             group       => $group,
+            refreshonly => true,
             environment => [
                     "IS_PROD=${is_prod}",
                     "DB_PASS=${db_pass}", 

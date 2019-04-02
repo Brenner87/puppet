@@ -162,6 +162,28 @@ class django::quizpoint (
         db_port       => $db_port,
         db_user       => $db_user,
         db_name       => $db_name,
-        require       => Vcsrepo["${path}/www"]
+        subscribe     => Vcsrepo["${path}/www"]
    }
+   exec { 'daemon-reload':
+        command     => '/usr/bin/systemctl daemon-reload',
+        refreshonly => true,
+        subscribe   => File["/etc/systemd/system/${proj_name}.service"],
+    }
+
+    service {$proj_name:
+        ensure => running,
+        enable => true,
+        subscribe => [
+                        Exec['daemon-reload'],
+                        File["${path}/config/uwsgi.ini"],
+                        File["${path}/config/vars"],
+                        Django::Tools::Ccollectstatic[$path]
+                     ],
+    }
+
+    service {'nginx':
+        ensure    => running,
+        enable    => true,
+        subscribe => Service[$proj_name],
+    }
 }
