@@ -73,4 +73,4 @@
     'python': 'python36'
     'uwsgi_port': 3031
     'uwsgi_addr': '127.0.0.1'
-    'static': 'QuizSite/statuc'
+    'static': 'QuizSite/static'

@@ -21,9 +21,9 @@ class django::quizpoint (
     $python        = $quizpoint_params['python'] 
     $uwsgi_port    = $quizpoint_params['uwsgi_port']
     $uwsgi_addr    = $quizpoint_params['uwsgi_addr']
+    $static        = $quizpoint_params['static']
     $db_pass       = $quizpoint_secret['db_pass']
     $db_key        = $quizpoint_secret['db_key']
-    $static        = $quizpoint_secret['static']
 
     user {$user:
         ensure     => present,
