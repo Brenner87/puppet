@@ -153,7 +153,7 @@ class django::quizpoint (
 
     file {"${path}/config/${proj_name}_nginx.conf":
         ensure         => present,
-        content        => epp('django/templates/proj_nginx.conf.epp', {
+        content        => epp('django/proj_nginx.conf.epp', {
             proj_name  => $proj_name,
             path       => $path,
             user       => $user,
