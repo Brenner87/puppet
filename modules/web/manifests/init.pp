@@ -11,8 +11,4 @@ class web {
         user      => 'root'
     }
 
-    service {'nginx':
-        ensure  => running,
-        enabled => true,
-    }
 }
