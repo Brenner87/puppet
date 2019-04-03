@@ -3,7 +3,7 @@ class web {
         ensure => 'latest',
     }
     
-    file {'':
+    file {'/etc/nginx/nginx.conf':
         ensure    => 'present',
         content   => epp('web/nginx.conf.epp'),
         require   => Package['nginx'],
