@@ -151,6 +151,30 @@ class django::quizpoint (
         require => File["${path}/config"],
     }
 
+    file {"${path}/config/${proj_name}_nginx.conf":
+        ensure         => present,
+        content        => epp('django/templates/proj_nginx.conf.epp', {
+            proj_name  => $proj_name,
+            path       => $path,
+            user       => $user,
+            uwsgi_port => $uwsgi_port,
+            uwsgi_addr => $uwsgi_addr
+        }),
+        owner   => 'root',
+        group   => 'root',
+        require => File["${path}/config"],
+     }
+
+     file {"/etc/nginx/conf.d/${proj_name}_nginx.conf":
+        ensure  => 'link',
+        target  => "${path}/config/${proj_name}_nginx.conf",
+        require => [
+                        File["${path}/config/${proj_name}_nginx.conf"],
+                        Package['nginx']
+                   ],
+        notify => Service['nginx']
+     }
+
    django::tools::collectstatic {$path:
         user          => $quizpoint_params['user'],
         group         => 'nginx',
