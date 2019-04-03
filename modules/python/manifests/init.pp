@@ -37,9 +37,10 @@ class python {
     ){
 
         if $req_file {
-            $command="/bin/sudo -u ${owner} ${venv}/bin/${python} -m pip install -r ${req_file} && 
-            /bin/sudo -u ${owner} sh -c 'echo DONE > ${venv}/bin/${python}_${owner}_modules_deployment_done'"
+            $command="/bin/sudo -u ${owner} ${venv}/bin/${python} -m pip install -r ${req_file}" 
+            #            && /bin/sudo -u ${owner} sh -c 'echo DONE > ${venv}/bin/${python}_${owner}_modules_deployment_done'"
             #            $unless_command="/bin/ls ${venv}/bin/${python}_${owner}_modules_deployment_done"
+            $unless_command='/bin/false'
         }
 
         elsif $version {
