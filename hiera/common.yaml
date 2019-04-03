@@ -62,8 +62,8 @@
     'proj_src': 'https://github.com/Brenner87/QuizPoint.git'
     'proj_name': 'QuizPoint'
     'proj_db_addr': '192.168.56.112'
-    'proj_path': '/opt/quizqoint'
-    'wsgi_cong': '/opt/quizqoint/config'
+    'proj_path': '/opt/quizpoint'
+    'wsgi_cong': '/opt/quizpoint/config'
     'is_prod': 'true'
     'db_port': 5432
     'db_user': 'quizpoint'
