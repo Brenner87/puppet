@@ -23,6 +23,7 @@ class django::quizpoint (
     $uwsgi_addr    = $quizpoint_params['uwsgi_addr']
     $db_pass       = $quizpoint_secret['db_pass']
     $db_key        = $quizpoint_secret['db_key']
+    $static        = $quizpoint_secret['static']
 
     user {$user:
         ensure     => present,
