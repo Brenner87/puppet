@@ -153,13 +153,15 @@ class django::quizpoint (
     }
 
     file {"${path}/config/${proj_name}_nginx.conf":
-        ensure         => present,
-        content        => epp('django/proj_nginx.conf.epp', {
-            proj_name  => $proj_name,
-            path       => $path,
-            user       => $user,
-            uwsgi_port => $uwsgi_port,
-            uwsgi_addr => $uwsgi_addr
+        ensure          => present,
+        content         => epp('django/proj_nginx.conf.epp', {
+            proj_name   => $proj_name,
+            path        => $path,
+            user        => $user,
+            uwsgi_port  => $uwsgi_port,
+            uwsgi_addr  => $uwsgi_addr,
+            proj_path   => $path,
+            static_path => $static
         }),
         owner   => 'root',
         group   => 'root',
