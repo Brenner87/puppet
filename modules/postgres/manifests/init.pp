@@ -20,7 +20,7 @@ class postgres {
     #     postgresql_version => '9.4',
     }
 
-        postgresql::server::pg_hba_rule { 'allow quizpoint access':
+        postgresql::server::pg_hba_rule { 'allow quizpoint access from local host':
     #          description        => 'Open up postgresql for access from 200.1.2.0/24',
          type               => 'host',
          database           => 'quizpoint',
