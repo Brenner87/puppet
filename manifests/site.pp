@@ -18,3 +18,8 @@ node /^web.*vagrant\.com/ {
     include 'role::web'
     include 'role::django'
 }
+
+node /^db.*vagrant\.com/ {
+    notify {'This is production environment':}
+    include 'role::postgres'
+}
