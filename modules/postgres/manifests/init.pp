@@ -1,6 +1,6 @@
 class postgres {
     class { 'postgresql::globals':
-        version             => '11.2',
+        version             => '9.6',
         manage_package_repo => true,
         encoding            => 'UTF8',
   }->
