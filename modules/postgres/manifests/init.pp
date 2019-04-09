@@ -1,9 +1,9 @@
 class postgres {
-    class { 'postgresql::globals':
-        version             => '9.6',
-        manage_package_repo => true,
-        encoding            => 'UTF8',
-  }->
+        #    class { 'postgresql::globals':
+        # version             => '9.6',
+        #manage_package_repo => true,
+        #encoding            => 'UTF8',
+        #}->
     class { 'postgresql::server':
         postgres_password => '111',
         #package_name      => 'postgresql11-server'
