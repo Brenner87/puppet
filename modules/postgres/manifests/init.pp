@@ -1,7 +1,7 @@
 class postgres {
     class { 'postgresql::server':
         postgres_password => '111',
-        package_name      => 'postgresql11-server'
+        #package_name      => 'postgresql11-server'
     }
 
     postgresql::server::db { 'quizpoint':
