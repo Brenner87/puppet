@@ -59,12 +59,16 @@
   base::handle_users::auth_keys:
     'vagrant': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7M2Yz3BH3YTll65eaTQ7wa9upYp+HpcMdmFg+NXvvHt3uj5L5W7xdbDNGT176tXFZ+/AzTfNPXaiMslG8R3sKPxG+p0jYvJaAybduHfh8F900bvaZm9C7MeGwHDxNER8Q1wh7Ahdvm8xr0woOE2WWEmFUbv60xHVwpiTsl8XzHvHU4zmV1II+cokjbGwLtHKnCoV+YIYtOkOcTENVVReh+cO1Xw9RKV602+lTWTjvTlf+vRVCVOt4BhKFuyx8vJQCD5aIhXoTL2UIioe9yNFqZRmVxLgyays2fDhxKimdrDpS2ccDuqm4jPEl8/BNrBV68PA8O5n3MsRmUBDv7MYd vagrant@jenkins.vagrant.com'
 
+  postgres::params:
+    'version': 11
+    'port': 5432
 
   django::quizpoint::quizpoint_params:
     'proj_allowed_hosts': '.vagrant.com 127.0.0.1'
     'proj_src': 'https://github.com/Brenner87/QuizPoint.git'
     'proj_name': 'QuizPoint'
     'proj_db_addr': '192.168.56.112'
+    'web_server_addr': '192.168.56.113'
     'proj_path': '/opt/quizpoint'
     'wsgi_cong': '/opt/quizpoint/config'
     'is_prod': 'true'

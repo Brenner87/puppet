@@ -22,6 +22,7 @@ class django::quizpoint (
     $uwsgi_port    = $quizpoint_params['uwsgi_port']
     $uwsgi_addr    = $quizpoint_params['uwsgi_addr']
     $static        = $quizpoint_params['static']
+    $web_serv_addr = $quizpoint_params['web_server_addr']
     $db_pass       = $quizpoint_secret['db_pass']
     $db_key        = $quizpoint_secret['db_key']
 
@@ -213,4 +214,5 @@ class django::quizpoint (
         enable    => true,
         subscribe => Service[$proj_name],
     }
+
 }
