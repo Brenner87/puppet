@@ -28,10 +28,10 @@ class postgres {
         user               => 'quizpoint',
         address            => '127.0.0.1',
         auth_method        => 'md5',
-        subscribe          => Postgresql::Server::Db['quizpoint']
+        require            => Postgresql::Server::Db['quizpoint']
     }
     postgresql::server::config_entry { 'listen_addresses':
         value     => $fqdn,
-        subscribe => Class['postgresql::server']
+        require   => Class['postgresql::server']
 }
 }
