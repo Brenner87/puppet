@@ -31,7 +31,7 @@ class postgres {
         subscribe          => Postgresql::Server::Db['quizpoint']
     }
     postgresql::server::config_entry { 'listen_addresses':
-        value => $fqdn,
-        subscribe          => Postgresql::Server::Db['quizpoint']
+        value     => $fqdn,
+        subscribe => Class['postgresql::server']
 }
 }
