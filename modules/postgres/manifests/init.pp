@@ -1,16 +1,12 @@
 class postgres {
-        #    class { 'postgresql::globals':
-        # version             => '9.6',
-        #manage_package_repo => true,
-        #encoding            => 'UTF8',
-        #}->
+    class { 'postgresql::globals':
+        version             => '11.2',
+        manage_package_repo => true,
+        encoding            => 'UTF8',
+        }->
     class { 'postgresql::server':
         postgres_password => '111',
         #package_name      => 'postgresql11-server'
-    }
-    postgresql::server::config_entry { 'listen_addresses':
-        value     => $fqdn,
-        #require   => Class['postgresql::server']
     }->
     postgresql::server::db { 'quizpoint':
         user      => 'quizpoint',
@@ -22,7 +18,7 @@ class postgres {
         type               => 'host',
         database           => 'quizpoint',
         user               => 'quizpoint',
-        address            => '192.168.56.113',
+        address            => '192.168.56.113/32',
         auth_method        => 'md5',
         #require            => Postgresql::Server::Db['quizpoint']
     }->
@@ -31,8 +27,12 @@ class postgres {
         type               => 'host',
         database           => 'quizpoint',
         user               => 'quizpoint',
-        address            => '127.0.0.1',
+        address            => '127.0.0.1/32',
         auth_method        => 'md5',
         #require            => Postgresql::Server::Db['quizpoint']
+    }
+    postgresql::server::config_entry { 'listen_addresses':
+        value     => $fqdn,
+        #require   => Class['postgresql::server']
     }
 }
