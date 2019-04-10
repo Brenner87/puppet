@@ -13,10 +13,10 @@
       gid:    '1000'
     'jenkins':
       ensure: 'present'
-      gid:    '993'
+      gid:    '1093'
     'docker':
       ensure: 'present'
-      gid:    '992'
+      gid:    '1092'
 
   base::handle_users::users:
     'vagrant':
