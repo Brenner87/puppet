@@ -113,7 +113,10 @@ class django::quizpoint (
         db_port       => $db_port,
         db_user       => $db_user,
         db_name       => $db_name,
-        require   => Python::Install_pip_module['requirements.txt'],
+        require   => [
+                Python::Install_pip_module['requirements.txt'], 
+                Class["postgres::quizpoint"]
+                    ]
         subscribe => Vcsrepo["${path}/www"]
    }
 
@@ -130,7 +133,10 @@ class django::quizpoint (
         db_name       => $db_name,
         super_user      => $user,
         pass      => $super_pass,
-        require   => Python::Install_pip_module['requirements.txt'],
+        require   => [
+                Python::Install_pip_module['requirements.txt'],
+                Class["postgres::quizpoint"]
+                    ]
         subscribe => Vcsrepo["${path}/www"]
     }
 

@@ -15,6 +15,5 @@ class postgres::quizpoint{
         user        => $params['db_user'],
         address     => "${web_server_addr}/32",
         auth_method => 'md5',
-        require     => Postgresql::Server::Db[$params['db_name']]
     }
 }
