@@ -103,12 +103,32 @@ class django::quizpoint (
    }
 
    django::tools::migrate_db{$path:
+        user          => $quizpoint_params['user'],
+        group         => 'nginx',
+        is_prod       => $is_prod,
+        db_pass       => $db_pass,
+        db_key        => $db_key,
+        allowed_hosts => $allowd_hosts,
+        db_addr       => $db_addr,
+        db_port       => $db_port,
+        db_user       => $db_user,
+        db_name       => $db_name,
         require   => Python::Install_pip_module['requirements.txt'],
         subscribe => Vcsrepo["${path}/www"]
    }
 
     django::tools::create_superuser{$path:
-        user      => $user,
+        user          => $quizpoint_params['user'],
+        group         => 'nginx',
+        is_prod       => $is_prod,
+        db_pass       => $db_pass,
+        db_key        => $db_key,
+        allowed_hosts => $allowd_hosts,
+        db_addr       => $db_addr,
+        db_port       => $db_port,
+        db_user       => $db_user,
+        db_name       => $db_name,
+        super_user      => $user,
         pass      => $super_pass,
         require   => Python::Install_pip_module['requirements.txt'],
         subscribe => Vcsrepo["${path}/www"]
