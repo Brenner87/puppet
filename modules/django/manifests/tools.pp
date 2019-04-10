@@ -29,4 +29,26 @@ class django::tools {
             ]
         }     
     }
+
+    define migrate_db (
+        $proj_path=$title
+    ){
+        Exec {'migrate_db':
+            command     => "${proj_path}/env/bin/python ${proj_path}/www/manage.py migrate",
+            refreshonly => true,
+        }
+    }
+
+    define create_superuser (
+        $user='admin',
+        $pass=undef,
+        $mail='admin@example.com',
+        $proj_path=$title
+    ){
+        Exec{'Create project superuser':
+            command => "${proj_path}/env/bin/python ${proj_path}/www/manage.py shell -c \"from django.contrib.auth.models import User; User.objects.create_superuser('${user}', '${mail}', '${pass}')\"",
+        refreshonly => true,
+        },
+    }
+ 
 }

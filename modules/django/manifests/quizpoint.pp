@@ -25,6 +25,7 @@ class django::quizpoint (
     $web_serv_addr = $quizpoint_params['web_server_addr']
     $db_pass       = $quizpoint_secret['db_pass']
     $db_key        = $quizpoint_secret['db_key']
+    $super_pass    = $quizpoint_secret['superuser_pass']
 
     user {$user:
         ensure     => present,
@@ -93,16 +94,25 @@ class django::quizpoint (
     }
 
     python::install_pip_module {'requirements.txt':
-        python   => $python,
-        venv     => "${path}/env",
-        owner    => $user,
-        req_file => "${path}/www/requirements.txt",
-        require  => [
-                        Python::Create_venv["${path}/env"], 
-                        Vcsrepo["${path}/www"]                    
-                    ]
+        python    => $python,
+        venv      => "${path}/env",
+        owner     => $user,
+        req_file  => "${path}/www/requirements.txt",
+        require   => Python::Create_venv["${path}/env"],
+        subscribe => Vcsrepo["${path}/www"]                    
    }
 
+   django::tools::migrate_db{$path:
+        require   => Python::Install_pip_module['requirements.txt'],
+        subscribe => Vcsrepo["${path}/www"]
+   }
+
+    django::tools::create_superuser{$path:
+        user      => $user,
+        pass      => $super_pass,
+        require   => Python::Install_pip_module['requirements.txt'],
+        subscribe => Vcsrepo["${path}/www"]
+    }
 
     file {"${path}/config/vars":
         ensure  => present,
