@@ -6,4 +6,5 @@ class puppetmaster ($puppet_version){
     service {'puppetserver':
         ensure => 'running',
         enable => true,
+    }
 }
