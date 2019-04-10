@@ -54,6 +54,9 @@
       ip:     '192.168.56.115'
       host_aliases: 
         - 'puppetmaster'
+    'quizpoint.vagrant.com':
+      ensure: 'present'
+      ip:     '192.168.56.116'
       
 
   base::handle_users::auth_keys:
