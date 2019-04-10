@@ -12,7 +12,8 @@ class postgres
         }->
     class { 'postgresql::server':
         postgres_password => $postgres_pass,
-        #package_name      => 'postgresql11-server'
+        #package_name     => 'postgresql11-server'
+        notify            => Class['postgres::quizpoint']
     }
     postgresql::server::config_entry { 'listen_addresses':
         value     => "${fqdn}, 127.0.0.1",

@@ -16,7 +16,7 @@ class django::tools {
         Exec {$command:
             user        => $user,
             group       => $group,
-            refreshonly => true,
+            #refreshonly => true,
             environment => [
                     "IS_PROD=${is_prod}",
                     "DB_PASS=${db_pass}", 
@@ -45,7 +45,7 @@ class django::tools {
     ){
         $command="${proj_path}/env/bin/python ${proj_path}/www/manage.py migrate"
         Exec {$command:
-            refreshonly => true,
+                #            refreshonly => true,
             environment => [
                     "IS_PROD=${is_prod}",
                     "DB_PASS=${db_pass}", 
@@ -77,7 +77,7 @@ class django::tools {
     ){
         $command="${proj_path}/env/bin/python ${proj_path}/www/manage.py shell -c \"from django.contrib.auth.models import User; User.objects.create_superuser('${super_user}', '${mail}', '${pass}')\""
         Exec{$command:
-            refreshonly => true,
+                #            refreshonly => true,
             environment => [
                     "IS_PROD=${is_prod}",
                     "DB_PASS=${db_pass}", 

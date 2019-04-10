@@ -7,7 +7,6 @@ class postgres::quizpoint{
     postgresql::server::db { $params['db_name']:
         user      => $params['db_user'],
         password  => postgresql_password($params['db_user'], $user_pass),
-        require   => Class['postgresql::server']
     }->
     postgresql::server::pg_hba_rule { 'allow quizpoint access':
         description => 'Open access from web server',
