@@ -13,7 +13,7 @@ class postgres
     class { 'postgresql::server':
         postgres_password => $postgres_pass,
         #package_name      => 'postgresql11-server'
-    }->
+    }
     postgresql::server::config_entry { 'listen_addresses':
         value     => $fqdn,
         #require   => Class['postgresql::server']
