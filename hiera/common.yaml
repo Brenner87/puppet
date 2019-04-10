@@ -28,13 +28,13 @@
       gid:    1000
     'jenkins':
       ensure: 'present'
-      uid:    996
+      uid:    1093
       shell:  '/bin/false'
       home:   '/var/lib/jenkins'
       groups:   
         - 'jenkins'
         - 'docker'
-      gid:    '993'
+      gid:    '1093'
   
   base::handle_hosts::hosts:
     'jenkins.vagrant.com':
@@ -67,8 +67,10 @@
     'proj_allowed_hosts': '.vagrant.com 127.0.0.1'
     'proj_src': 'https://github.com/Brenner87/QuizPoint.git'
     'proj_name': 'QuizPoint'
-    'proj_db_addr': '192.168.56.112'
-    'web_server_addr': '192.168.56.113'
+#    'proj_db_addr': '192.168.56.112'
+    'proj_db_addr': '127.0.0.1'
+#    'web_server_addr': '192.168.56.113'
+    'web_server_addr': '127.0.0.1'
     'proj_path': '/opt/quizpoint'
     'wsgi_cong': '/opt/quizpoint/config'
     'is_prod': 'true'
