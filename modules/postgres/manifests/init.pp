@@ -15,7 +15,7 @@ class postgres
         #package_name      => 'postgresql11-server'
     }
     postgresql::server::config_entry { 'listen_addresses':
-        value     => $fqdn,
+        value     => "${fqdn}, 127.0.0.1",
         #require   => Class['postgresql::server']
     }
 }
