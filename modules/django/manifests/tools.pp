@@ -48,7 +48,7 @@ class django::tools {
         Exec{'Create project superuser':
             command => "${proj_path}/env/bin/python ${proj_path}/www/manage.py shell -c \"from django.contrib.auth.models import User; User.objects.create_superuser('${user}', '${mail}', '${pass}')\"",
         refreshonly => true,
-        },
+        }
     }
  
 }
