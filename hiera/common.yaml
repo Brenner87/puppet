@@ -60,7 +60,7 @@
     'vagrant': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7M2Yz3BH3YTll65eaTQ7wa9upYp+HpcMdmFg+NXvvHt3uj5L5W7xdbDNGT176tXFZ+/AzTfNPXaiMslG8R3sKPxG+p0jYvJaAybduHfh8F900bvaZm9C7MeGwHDxNER8Q1wh7Ahdvm8xr0woOE2WWEmFUbv60xHVwpiTsl8XzHvHU4zmV1II+cokjbGwLtHKnCoV+YIYtOkOcTENVVReh+cO1Xw9RKV602+lTWTjvTlf+vRVCVOt4BhKFuyx8vJQCD5aIhXoTL2UIioe9yNFqZRmVxLgyays2fDhxKimdrDpS2ccDuqm4jPEl8/BNrBV68PA8O5n3MsRmUBDv7MYd vagrant@jenkins.vagrant.com'
 
   postgres::params:
-    'version': 11
+    'version': '11'
     'port': 5432
 
   django::quizpoint::quizpoint_params:
