@@ -232,7 +232,7 @@ class django::quizpoint (
         ensure => running,
         enable => true,
         subscribe => [
-                        Exec['daemon-reload'],
+                #                Exec['daemon-reload'],
                         File["${path}/config/uwsgi.ini"],
                         File["${path}/config/vars"],
                         Django::Tools::Collectstatic[$path]
