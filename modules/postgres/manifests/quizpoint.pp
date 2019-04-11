@@ -8,7 +8,7 @@ class postgres::quizpoint{
         user      => $params['db_user'],
         password  => postgresql_password($params['db_user'], $user_pass),
     }->
-    postgresql::server::database_grant { params['db_name']:
+    postgresql::server::database_grant { $params['db_name']:
         privilege => 'ALL',
         db        => $params['db_name'],
         role      => $params['db_user'],
