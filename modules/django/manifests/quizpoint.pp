@@ -222,11 +222,11 @@ class django::quizpoint (
         db_name       => $db_name,
         subscribe     => Python::Install_pip_module['requirements.txt']
    }
-   exec { 'daemon-reload':
-        command     => '/usr/bin/systemctl daemon-reload',
-        refreshonly => true,
-        subscribe   => File["/etc/systemd/system/${proj_name}.service"],
-    }
+   #   exec { 'daemon-reload':
+   #     command     => '/usr/bin/systemctl daemon-reload',
+   #     refreshonly => true,
+   #     subscribe   => File["/etc/systemd/system/${proj_name}.service"],
+   # }
 
     service {$proj_name:
         ensure => running,
