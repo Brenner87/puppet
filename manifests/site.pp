@@ -26,15 +26,8 @@ node /^db.*vagrant\.com/ {
 
 node /^quizpoint.*vagrant\.com/ {
     notify {'This is production environment':}
-    stage {['database', 'web', 'django_app']:}
-    class {'role::postgres':
-        stage => 'database',
-    }
-    class {'role::web':
-        stage => 'web',
-    }
-    class {'django::quizpoint':
-        stage => 'django_app',
-    }
-    #    Class['role::postgres']->Class['role::web']->Class['django::quizpoint']
+    include 'role::postgres'
+    include 'role::web'
+    include 'django::quizpoint'
+    Class['role::postgres']->Class['role::web']->Class['django::quizpoint']
 }

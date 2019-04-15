@@ -4,7 +4,7 @@ class postgres
     $postgres_pass=undef
 ){
 
-    include postgres::quizpoint
+    contain postgres::quizpoint
     class { 'postgresql::globals':
         version             => $params['version'],
         manage_package_repo => true,
