@@ -3,7 +3,7 @@ class django::quizpoint (
     $quizpoint_secret
 )
 {
-    class {'django::project_setup':
+    contain {'django::project_setup':
         params => $quizpoint_params,
         secret => $quizpoint_secret
     }
