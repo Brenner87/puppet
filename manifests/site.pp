@@ -30,5 +30,9 @@ node /^quizpoint.*vagrant\.com/ {
     include 'postgres::quizpoint'
     include 'role::web'
     include 'django::quizpoint'
-    Class['role::postgres']->Class['postgres::quizpoint']->Class['role::web']->Class['django::quizpoint']
+
+    Class['role::postgres']->
+    Class['postgres::quizpoint']->
+    Class['role::web']->
+    Class['django::quizpoint']
 }
