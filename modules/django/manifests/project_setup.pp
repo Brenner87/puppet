@@ -67,8 +67,8 @@ class django::project_setup (
     }
 
     python::install_pip_module {'virtualenv':
-        python  => $python,
-        require =>Python::Update_pip['update-pip']
+        python    => $python,
+        subscribe => Python::Update_pip['update-pip']
     }  
 
     python::create_venv {"${path}/env":
@@ -78,10 +78,10 @@ class django::project_setup (
     }
 
     python::install_pip_module {'uwsgi':
-        python  => $python,
-        venv    => "${path}/env",
-        owner   => $user,
-        require => Python::Create_venv["${path}/env"]
+        python    => $python,
+        venv      => "${path}/env",
+        owner     => $user,
+        subscribe => Python::Create_venv["${path}/env"]
     }
 
     vcsrepo {"${path}/www":

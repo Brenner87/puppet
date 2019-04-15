@@ -54,7 +54,8 @@ class python {
         }
 
         Exec {$command:
-            unless  => $unless_command,
+            unless      => $unless_command,
+            refreshonly => true,
         }
     }
 
