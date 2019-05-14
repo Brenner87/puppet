@@ -1,6 +1,6 @@
 mod 'puppetlabs-stdlib'
 mod 'puppetlabs-ntp',           '4.1.0'
-mod 'puppet-python',            '2.2.2'
+#mod 'puppet-python',            '2.2.2'
 mod 'puppet-yum',               '3.1.1'
 mod 'tracywebtech-pip',         '1.3.4'
 mod 'puppetlabs-vcsrepo',       '2.4.0'
