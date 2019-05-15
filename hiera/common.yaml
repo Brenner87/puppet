@@ -46,9 +46,6 @@
     'web.vagrant.com':
       ensure: 'present'
       ip:     '192.168.56.113'
-    'puppetmaster.vagrant.com':
-      ensure: 'present'
-      ip:     '192.168.56.114'
     'db1.vagrant.com':
       ensure: 'present'
       ip:     '192.168.56.115'
