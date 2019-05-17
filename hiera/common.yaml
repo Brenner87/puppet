@@ -1,7 +1,8 @@
 ---
   base::base_version:             'latest'
   jenkins::install::base_version: '2.145-1.1'
-  jenkins::install::jdk_version:  '1.8.0.191.b12-0.el7_5'
+  #  jenkins::install::jdk_version:  '1.8.0.191.b12-0.el7_5'
+  jenkins::install::jdk_version:  'latest'
   puppetmaster::puppet_version:   '5.3.5-1.el7'
   docker::install::version:       '18.06.1.ce-3.el7'
   
