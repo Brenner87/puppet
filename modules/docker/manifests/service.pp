@@ -1,4 +1,6 @@
-service {"docker":
-    ensure => 'running',
-    enable => true,
+class docker:service {
+    service {"docker":
+        ensure => 'running',
+        enable => true,
     }
+}
