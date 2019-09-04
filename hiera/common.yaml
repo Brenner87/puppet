@@ -55,6 +55,9 @@
     'quizpoint.vagrant.com':
       ensure: 'present'
       ip:     '192.168.56.116'
+    'saltmaster.vagrant.com':
+      ensure: 'present'
+      ip:     '192.168.56.119'
       
 
   base::handle_users::auth_keys:
